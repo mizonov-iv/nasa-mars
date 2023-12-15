@@ -1,3 +1,26 @@
+body {
+    background: #141218;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    color: #c7cbd0;
+}
+
+.nav-list-item {
+    cursor: pointer;
+    margin-right: 9px;
+}
+
+
+
+
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -26,4 +49,59 @@
 .form-btn {
     cursor: pointer;
     padding: 10px;
+}
+
+.images-list {
+    list-style: none;
+    max-width: 600px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-item {
+    width: 30%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.item-img {
+    width: 100%;
+    object-fit: cover;
+    transition: scale 1s linear;
+}
+
+.item-img:hover {
+    scale: 1.1;
+}
+
+/*IMG_POPUP*/
+.image-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.55);
+    height: 100%;
+    width: 100%;
+}
+
+.img-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.popup-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    border: 5px solid #ffff;
 }
