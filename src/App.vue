@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <select v-model="selectedRover">
-      <option disabled value="">Выберите ровер</option>
+  <form class="form" @submit.prevent="sendForm">
+    <select class="form-select" v-model="selectedRover">
+      <option class="select-option" disabled value="">Выберите ровер</option>
       <option
+          class="select-option"
           v-for="rover in roversList"
           :key="rover.id"
           :value="rover.name"
@@ -10,72 +11,48 @@
         {{rover.name}}
       </option>
     </select>
-
-    <select>
-      <option disabled value="">Выберите камеру</option>
-      <option v-for="camera in cameras" :key="camera" :value="camera.name">{{camera.name}}</option>
+    <select class="form-select" v-model="selectedCamera" :disabled="!selectedRover">
+      <option class="select-option" disabled value="">Выберите камеру</option>
+      <option
+          class="select-option"
+          v-for="camera in cameras"
+          :key="camera"
+          :value="camera.name"
+      >
+        {{camera.name}}
+      </option>
     </select>
-  </div>
+    <input
+        class="form-input"
+        type="number"
+        max="1000"
+        placeholder="Выберите день"
+        :disabled="!selectedRover"
+        v-model="selectedSol"
+    >
+    <button class="form-btn" type="submit">Увидеть снимки</button>
+  </form>
 </template>
 
 <script setup>
 import axios from 'axios'
-import {computed, onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 
 const API_KEY = 'RRXijm1h3BtuMsaXOIKawe81ERYXsWcGVemIW8FJ'
 const roversList = [
   {
     id: 0,
-    name: "Curiosity"
+    name: "curiosity"
   },
   {
     id: 1,
-    name: "Opportunity"
+    name: "opportunity"
   },
   {
     id: 2,
-    name: "Spirit"
+    name: "spirit"
   }
 ]
-const camerasList = [
-  {
-    name: "Front Hazard Avoidance Camera",
-    abbreviation: "FHAZ"
-  },
-  {
-    name: "RHAZ",
-    abbreviation: "Rear Hazard Avoidance Camera"
-  },
-  {
-    name: "MAST",
-    abbreviation: "Mast Camera"
-  },
-  {
-    name: "CHEMCAM",
-    abbreviation: "Chemistry and Camera Complex"
-  },
-  {
-    name: "MAHLI",
-    abbreviation: "Mars Hand Lens Imager"
-  },
-  {
-    name: "MARDI",
-    abbreviation: "Mars Descent Imager"
-  },
-  {
-    name: "NAVCAM",
-    abbreviation: "Navigation Camera"
-  },
-  {
-    name: "PANCAM",
-    abbreviation: "Panoramic Camera"
-  },
-  {
-    name: "MINITES",
-    abbreviation: "Miniature Thermal Emission Spectrometer (Mini-TES)"
-  },
-]
-
 const curiosityCameras = [
   {
     name: "Front Hazard Avoidance Camera",
@@ -112,26 +89,39 @@ const opportunityAndSpiritCameras = [
     abbreviation: "FHAZ"
   },
   {
-    name: "RHAZ",
-    abbreviation: "Rear Hazard Avoidance Camera"
+    name: "Rear Hazard Avoidance Camera",
+    abbreviation: "RHAZ"
   },
   {
-    name: "NAVCAM",
-    abbreviation: "Navigation Camera"
+    name: "Navigation Camera",
+    abbreviation: "NAVCAM"
   },
   {
-    name: "PANCAM",
-    abbreviation: "Panoramic Camera"
+    name: "Panoramic Camera",
+    abbreviation: "PANCAM"
   },
   {
-    name: "MINITES",
-    abbreviation: "Miniature Thermal Emission Spectrometer (Mini-TES)"
+    name: "Miniature Thermal Emission Spectrometer (Mini-TES)",
+    abbreviation: "MINITES"
   },
 ]
 
 const resp = ref()
 
 const selectedRover = ref("")
+const selectedCamera = ref("")
+const selectedSol = ref(1)
+
+const sendForm = () => {
+  axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${selectedRover.value}/photos?sol=${selectedSol.value}&api_key=${API_KEY}`)
+      .then(response => {
+        resp.value = response.data
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+}
 
 const cameras = computed(() => {
   if(selectedRover.value) {
@@ -139,13 +129,5 @@ const cameras = computed(() => {
       return curiosityCameras
     } else return opportunityAndSpiritCameras
   }
-})
-
-onMounted(() => {
-  axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${API_KEY}`)
-      .then(response => {
-        resp.value = response.data
-        console.log(response)
-      })
 })
 </script>
