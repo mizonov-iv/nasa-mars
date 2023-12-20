@@ -2,6 +2,15 @@ body {
     background: #141218;
 }
 
+.hero {
+    height: 100vh;
+    /*background-image: url("/src/assets/1.jpg");*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 3s ease;
+}
+
 .nav-list {
     list-style: none;
     display: flex;

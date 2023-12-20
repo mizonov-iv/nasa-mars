@@ -1,40 +1,43 @@
 <template>
-  <Navigation/>
-  <Spinner v-if="loadingStatus"/>
+  
+  <div class="hero" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
+    <Navigation/>
+    <form class="form" @submit.prevent="sendForm">
+      <select class="form-select" v-model="selectedRover">
+        <option class="select-option" disabled value="">Выберите ровер</option>
+        <option
+            class="select-option"
+            v-for="rover in roversList"
+            :key="rover.id"
+            :value="rover.name"
+        >
+          {{rover.name}}
+        </option>
+      </select>
+      <select class="form-select" v-model="selectedCamera" :disabled="!selectedRover">
+        <option class="select-option" disabled value="">Выберите камеру</option>
+        <option
+            class="select-option"
+            v-for="camera in cameras"
+            :key="camera"
+            :value="camera.abbreviation"
+        >
+          {{camera.name}}
+        </option>
+      </select>
+      <input
+          class="form-input"
+          type="number"
+          max="1000"
+          placeholder="Выберите день"
+          :disabled="!selectedCamera"
+          v-model="selectedSol"
+      >
+      <button class="form-btn" type="submit">Увидеть снимки</button>
+    </form>
+  </div>
 
-  <form class="form" @submit.prevent="sendForm">
-    <select class="form-select" v-model="selectedRover">
-      <option class="select-option" disabled value="">Выберите ровер</option>
-      <option
-          class="select-option"
-          v-for="rover in roversList"
-          :key="rover.id"
-          :value="rover.name"
-      >
-        {{rover.name}}
-      </option>
-    </select>
-    <select class="form-select" v-model="selectedCamera" :disabled="!selectedRover">
-      <option class="select-option" disabled value="">Выберите камеру</option>
-      <option
-          class="select-option"
-          v-for="camera in cameras"
-          :key="camera"
-          :value="camera.abbreviation"
-      >
-        {{camera.name}}
-      </option>
-    </select>
-    <input
-        class="form-input"
-        type="number"
-        max="1000"
-        placeholder="Выберите день"
-        :disabled="!selectedCamera"
-        v-model="selectedSol"
-    >
-    <button class="form-btn" type="submit">Увидеть снимки</button>
-  </form>
+  <Spinner v-if="loadingStatus"/>
 
   <ul class="images-list">
     <li class="image-item" v-for="item in paginatedItems" :key="item.id" @click="openPopup(item)">
@@ -47,18 +50,31 @@
   </ul>
 
   <button @click="loadMore" v-if="showLoadMoreButton">Load more</button>
-
   <ImagePopup v-if="showPopup" :item="popupItem" @closePopup="closePopup"/>
-
   <p v-if="message">{{message}}</p>
 </template>
 
 <script setup>
 import axios from 'axios'
-import {computed, ref} from "vue"
+import {computed, onMounted, ref} from "vue"
 import ImagePopup from "./components/ImagePopup.vue"
 import Spinner from "./components/Spinner.vue"
 import Navigation from "./components/Navigation.vue";
+
+onMounted(() => {
+  let imgNumber = 1
+  bgImage.value = `/src/assets/${imgNumber}.jpg`
+
+  setTimeout(() => {
+    imgNumber++
+    bgImage.value = `/src/assets/${imgNumber}.jpg`
+  }, 3000)
+
+  console.log(bgImage)
+})
+
+const bgImage = ref('')
+
 
 const API_KEY = 'RRXijm1h3BtuMsaXOIKawe81ERYXsWcGVemIW8FJ'
 const roversList = [
