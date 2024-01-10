@@ -1,0 +1,48 @@
+.navigation {
+    height: 3rem;
+    padding: 0.5rem;
+    background: #000000;
+}
+
+.nav-close-btn {
+    color: #FFFFFF;
+    z-index: 1000;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.nav-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: #000000;
+}
+
+.nav-list-item {
+    cursor: pointer;
+    margin: 9px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+@media screen and (min-width: 600px) {
+    .navigation {
+        padding: 1rem;
+    }
+    .nav-list {
+        list-style: none;
+        display: flex;
+    }
+}
