@@ -1,9 +1,9 @@
 <template>
   <div class="hero" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
     <Navigation/>
-
-    <h1>Миссия на Марс</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias consequatur debitis delectus dicta explicabo nam perspiciatis quasi sapiente veniam.</p>
+    <div class="container">
+      <RouterView/>
+    </div>
 
     <form class="form" @submit.prevent="sendForm">
       <select class="form-select" v-model="selectedRover">
