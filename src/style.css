@@ -1,5 +1,6 @@
+@import "styles/normalize.css";
 @import "styles/navigation.css";
-@import "styles/navigation.css";
+@import "styles/homeView.css";
 
 *,
 *::before,
@@ -33,7 +34,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    transition: background-image 3s ease;
+    transition: background-image 1s ease-in-out;
 }
 
 ul {
@@ -43,6 +44,10 @@ ul {
 p {
     /*text-align: center;*/
     font-size: 18px;
+    margin: 0;
+}
+
+h1 {
     margin: 0;
 }
 

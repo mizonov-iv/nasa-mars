@@ -10,7 +10,7 @@ export const router = createRouter({
             component: HomeView
         },
         {
-            path: '/',
+            path: '/rover-select',
             component: RoverSelectView
         },
     ]
