@@ -1,5 +1,26 @@
 .home-section {
     display: flex;
     flex-direction: column;
-    /*padding-top: 50px;*/
+}
+
+.home-header {
+    padding-top: 2rem;
+    max-width: 60%;
+}
+
+.home-header-title {
+    display: block;
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.select-btn {
+    padding: 10px 24px;
+    border-radius: 16px;
+    /*border: 1px solid #49454F;*/
+    background: #D0BCFF;
+    color: #381E72;
+
 }

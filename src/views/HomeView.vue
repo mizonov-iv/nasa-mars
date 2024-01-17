@@ -1,12 +1,14 @@
 <template>
   <div class="hero" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
     <section class="container home-section">
-      <header>
-        <h1>Миссия на Марс</h1>
+      <header class="home-header">
+        <h1 class="home-header-title">Миссия на Марс</h1>
+        <p style="color: #FFFFFF; font-size: 18px">
+          {{result}}
+        </p>
       </header>
       <main>
-        <p>В 2004 году NASA запустила программу по исследованию Марса с помощью двух космическихх аппаратов, которые пробыли на планете более 10 лет.</p>
-        <router-link to="rover-select">Select</router-link>
+        <router-link to="rover-select" class="select-btn">Select</router-link>
       </main>
     </section>
   </div>
@@ -17,16 +19,55 @@ import {onMounted, ref} from "vue";
 
 const bgImage = ref('')
 
-onMounted(() => {
-  let imgNumber = 1
-  bgImage.value = `/src/assets/${imgNumber}.jpg`
+let line = 0
+const text = ["В 2004 году NASA запустила программу по исследованию Марса с помощью двух космическихх аппаратов, которые пробыли на планете более 10 лет."]
+let count = 0;
+const result = ref("")
 
-  setInterval(() => {
-    imgNumber++
-    if (imgNumber === 5) {
-      imgNumber = 1
-    }
-    bgImage.value = `/src/assets/${imgNumber}.jpg`
-  }, 7000)
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+function typeLine() {
+  let interval = setTimeout(
+      () => {
+        result.value += text[line][count]
+        count++;
+        if (count >= text[line].length) {
+          count = 0;
+          // sleep(2000);
+          // result.value = ''
+          // if (result.value.length === text.length) {
+          //   clearTimeout(interval);
+            return true;
+          // }
+        }
+        typeLine();
+      }, getRandomInt(getRandomInt(100*2.5)))
+}
+
+onMounted(() => {
+  typeLine();
 })
+
+// onMounted(() => {
+//   let imgNumber = 1
+//   bgImage.value = `/src/assets/${imgNumber}.jpg`
+//
+//   setInterval(() => {
+//     imgNumber++
+//     if (imgNumber === 5) {
+//       imgNumber = 1
+//     }
+//     bgImage.value = `/src/assets/${imgNumber}.jpg`
+//   }, 7000)
+// })
 </script>
