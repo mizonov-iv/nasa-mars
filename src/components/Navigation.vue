@@ -10,7 +10,6 @@
         <span></span>
         <span></span>
       </button>
-
       <nav
           class="menu"
           :class="{open: navIsOpen}"
@@ -38,7 +37,6 @@ const navIsOpen = ref(false)
 
 const toggleBurger = () => {
   navIsOpen.value = !navIsOpen.value
-  console.log(navIsOpen.value.classList)
 }
 
 const links = ref([

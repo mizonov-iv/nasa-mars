@@ -2,6 +2,7 @@
 @import "styles/navigation.css";
 @import "styles/homeView.css";
 @import "styles/roverSelectView.css";
+@import "styles/footer.css";
 
 * {
     font-family: 'Roboto', sans-serif;
@@ -45,12 +46,12 @@ ul {
 }
 
 p {
-    /*text-align: center;*/
     font-size: 18px;
     margin: 0;
+    color: #FFFFFF;
 }
 
-h1, h2 {
+h1, h2, h3 {
     margin: 0;
 }
 
@@ -69,9 +70,28 @@ h1, h2 {
     margin: 8px;
 }
 
+select {
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select:not([multiple]) {
+
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: 0.85em auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+}
+
 .form-select {
     padding: 15px;
     border-radius: 8px;
+    border: none;
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
 }
 
 .select-option {
@@ -80,12 +100,19 @@ h1, h2 {
 }
 
 .form-input {
-    padding: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+
 }
 
 .form-btn {
     cursor: pointer;
-    padding: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
 }
 
 .images-list {
@@ -141,4 +168,20 @@ h1, h2 {
     transform: translate(-50%, -50%);
     width: 55%;
     border: 5px solid #ffff;
+}
+
+@media screen and (min-width: 600px) {
+    .images-list {
+        list-style: none;
+        max-width: 700px;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .image-item {
+        width: 32%;
+    }
 }

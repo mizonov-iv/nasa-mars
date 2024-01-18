@@ -1,13 +1,11 @@
 <template>
-  <section class="container section home-section">
-    <header class="home-header">
+  <section class="section home-section">
+    <header class="container home-header">
       <h1 class="home-header-title">Миссия на Марс</h1>
-      <p style="color: #FFFFFF; font-size: 18px">
-        {{result}}
-      </p>
     </header>
-    <main>
+    <main class="container home-main">
       <router-link to="rover-select" class="select-btn">Посмотреть снимки</router-link>
+      <p class="home-header-text">{{result}}</p>
     </main>
   </section>
 </template>

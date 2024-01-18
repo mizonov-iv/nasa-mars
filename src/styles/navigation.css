@@ -1,6 +1,8 @@
-.header, footer {
+.header, .footer {
     background: #000000;
     color: #FFFFFF;
+    height: 3rem;
+    z-index: 1000;
 }
 
 .header-container {
