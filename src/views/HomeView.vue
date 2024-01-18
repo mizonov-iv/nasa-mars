@@ -1,23 +1,23 @@
 <template>
-  <div class="hero" v-bind:style="{ 'background-image': 'url(' + bgImage + ')' }">
-    <section class="container home-section">
-      <header class="home-header">
-        <h1 class="home-header-title">Миссия на Марс</h1>
-        <p style="color: #FFFFFF; font-size: 18px">
-          {{result}}
-        </p>
-      </header>
-      <main>
-        <router-link to="rover-select" class="select-btn">Посмотреть снимки</router-link>
-      </main>
-    </section>
-  </div>
+  <section class="container section home-section">
+    <header class="home-header">
+      <h1 class="home-header-title">Миссия на Марс</h1>
+      <p style="color: #FFFFFF; font-size: 18px">
+        {{result}}
+      </p>
+    </header>
+    <main>
+      <router-link to="rover-select" class="select-btn">Посмотреть снимки</router-link>
+    </main>
+  </section>
 </template>
 
 <script setup>
 import {onMounted, ref} from "vue";
 
-const bgImage = ref('')
+onMounted(() => {
+  typeLine();
+})
 
 let line = 0
 const text = ["В 2004 году NASA запустила программу по исследованию Марса с помощью двух космическихх аппаратов, которые пробыли на планете более 10 лет."]
@@ -53,21 +53,4 @@ function typeLine() {
         typeLine();
       }, getRandomInt(getRandomInt(100*2.5)))
 }
-
-onMounted(() => {
-  typeLine();
-})
-
-// onMounted(() => {
-//   let imgNumber = 1
-//   bgImage.value = `/src/assets/${imgNumber}.jpg`
-//
-//   setInterval(() => {
-//     imgNumber++
-//     if (imgNumber === 5) {
-//       imgNumber = 1
-//     }
-//     bgImage.value = `/src/assets/${imgNumber}.jpg`
-//   }, 7000)
-// })
 </script>

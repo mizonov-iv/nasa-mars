@@ -1,5 +1,5 @@
 <template>
-  <section class="container home-section">
+  <section class="container section rovers-section">
     <header class="home-header">
       <h2 class="home-header-title">Выберите аппарат, камеру и день</h2>
     </header>

@@ -16,9 +16,9 @@
           :class="{open: navIsOpen}"
       >
         <ul class="menu-list">
-          <li class="menu-list-item">
+          <li class="menu-list-item" v-for="link in links">
             <router-link
-                v-for="link in links"
+
                 :to="link.path"
             >
               {{link.name}}

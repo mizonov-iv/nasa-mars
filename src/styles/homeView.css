@@ -1,6 +1,10 @@
 .home-section {
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    background-image: url("../assets/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
 }
 
 .home-header {
@@ -17,6 +21,8 @@
 }
 
 .select-btn {
+    width: 170px;
+    text-align: center;
     padding: 1rem;
     border-radius: 8px;
     background: #D0BCFF;
