@@ -4,7 +4,7 @@
 }
 
 .home-header {
-    padding-top: 2rem;
+    padding: 2rem 0;
     max-width: 60%;
 }
 
@@ -17,10 +17,15 @@
 }
 
 .select-btn {
-    padding: 10px 24px;
-    border-radius: 16px;
-    /*border: 1px solid #49454F;*/
+    padding: 1rem;
+    border-radius: 8px;
     background: #D0BCFF;
     color: #381E72;
+}
 
+@media screen and (min-width: 600px) {
+    .home-header {
+        padding: 4rem 0;
+        max-width: 70%;
+    }
 }

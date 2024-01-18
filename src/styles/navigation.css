@@ -95,6 +95,9 @@
 
     .menu-list-item {
         margin-bottom: 0;
+    }
+
+    .menu-list-item > a {
         margin-right: 10px;
     }
 }

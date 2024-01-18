@@ -2,6 +2,10 @@
 @import "styles/navigation.css";
 @import "styles/homeView.css";
 
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -47,16 +51,19 @@ p {
     margin: 0;
 }
 
-h1 {
+h1, h2 {
     margin: 0;
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 350px;
     margin: 0 auto;
-    border: 1px solid black;
+    padding: 1rem 0.5rem;
+    background: #F5EFF7;
+    border: 1px solid #CAC4D0;
+    border-radius: 8px;
 }
 
 .form > * {
@@ -64,7 +71,8 @@ h1 {
 }
 
 .form-select {
-    padding: 10px;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 .select-option {

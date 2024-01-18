@@ -10,17 +10,23 @@
         <span></span>
         <span></span>
       </button>
-      <p class="logo">Миссия на Марс</p>
+
       <nav
           class="menu"
           :class="{open: navIsOpen}"
       >
         <ul class="menu-list">
-          <li class="menu-list-item" v-for="link in links">
-            {{link}}
+          <li class="menu-list-item">
+            <router-link
+                v-for="link in links"
+                :to="link.path"
+            >
+              {{link.name}}
+            </router-link>
           </li>
         </ul>
       </nav>
+      <p class="logo">Миссия на Марс</p>
     </div>
   </header>
 </template>
@@ -36,8 +42,17 @@ const toggleBurger = () => {
 }
 
 const links = ref([
-    "Главня",
-    "Контакты",
-    "О полете на марс",
+  {
+    name: "Главная",
+    path: "/"
+  },
+  {
+    name: "Контакты",
+    path: "/"
+  },
+  {
+    name: "О полете на марс",
+    path: "/"
+  },
 ])
 </script>

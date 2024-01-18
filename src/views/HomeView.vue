@@ -8,7 +8,7 @@
         </p>
       </header>
       <main>
-        <router-link to="rover-select" class="select-btn">Select</router-link>
+        <router-link to="rover-select" class="select-btn">Посмотреть снимки</router-link>
       </main>
     </section>
   </div>
